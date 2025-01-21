@@ -1,0 +1,44 @@
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .hero {
+        margin-top: 50px;
+
+        &__title {
+            color: #fff;
+            text-align: center;
+            font-weight: 200;
+            font-size: 48px;
+        }
+
+        &__image {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            animation: anim 4s infinite;
+
+            @keyframes anim {
+                0% {
+                    scale: 1;
+                }
+
+                50% {
+                    scale: 1.1;
+                }
+
+                100% {
+                    scale: 1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main {
+        padding: 0px 20px;
+    }
+}

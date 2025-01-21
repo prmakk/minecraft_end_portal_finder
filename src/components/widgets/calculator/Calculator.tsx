@@ -66,6 +66,7 @@ const Calculator: FC = () => {
                 );
                 setAnswerX(xValue);
                 setAnswerZ(zValue);
+                toast.success("Координаты успешно найдены");
             }
         }
     };

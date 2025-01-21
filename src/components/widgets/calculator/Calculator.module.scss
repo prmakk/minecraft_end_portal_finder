@@ -1,0 +1,56 @@
+.title {
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+}
+
+.inputs {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    button {
+        background-color: #fe4a23;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        padding: 15px 20px;
+        cursor: pointer;
+        border-radius: 15px;
+        transition: 0.2s all ease-in-out;
+
+        &:active {
+            letter-spacing: 2px;
+        }
+    }
+}
+
+.answers {
+    padding-top: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 800px) {
+    .inputs {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        input {
+            max-width: 300px;
+        }
+    }
+}

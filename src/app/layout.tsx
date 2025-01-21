@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "@/styles/global.scss";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className={`${inter.variable}`}>{children}</body>
+            <body className={`${inter.variable}`}>
+                <Toaster position="top-right" />
+                {children}
+            </body>
         </html>
     );
 }

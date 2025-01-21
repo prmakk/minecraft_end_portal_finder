@@ -19,10 +19,10 @@ const Header: FC = () => {
                     }`}
                 >
                     <li>
-                        <Link href="#">Главная</Link>
+                        <Link href="#top">Главная</Link>
                     </li>
                     <li>
-                        <Link href="#">Найти крепость</Link>
+                        <Link href="#calculator">Найти крепость</Link>
                     </li>
                     <li>
                         <Link href="#">Инструкция</Link>

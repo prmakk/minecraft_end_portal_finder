@@ -7,62 +7,62 @@ import { toast } from "react-hot-toast";
 
 const Calculator: FC = () => {
     const [x1, setX1] = useState<string>("");
-    const [y1, setY1] = useState<string>("");
     const [z1, setZ1] = useState<string>("");
+    const [a1, setA1] = useState<string>("");
     const [x2, setX2] = useState<string>("");
-    const [y2, setY2] = useState<string>("");
     const [z2, setZ2] = useState<string>("");
+    const [a2, setA2] = useState<string>("");
     const [answerZ, setAnswerZ] = useState<number>(0);
     const [answerX, setAnswerX] = useState<number>(0);
 
     const calculateValues = (
-        z1: number,
-        z2: number,
+        a1: number,
+        a2: number,
         x1: number,
         x2: number,
-        y1: number,
-        y2: number
+        z1: number,
+        z2: number
     ) => {
         const p = Math.PI / 180;
 
         const cot = (x: number): number => 1 / Math.tan(x);
 
         if (
-            Math.round(z1) === -180 ||
-            Math.round(z1) === 0 ||
-            Math.round(z1) === 180
+            Math.round(a1) === -180 ||
+            Math.round(a1) === 0 ||
+            Math.round(a1) === 180
         ) {
             setAnswerX(Math.round(x1));
             setAnswerZ(
-                Math.round(cot(-z2 * p) * x1 - (x2 * cot(-z2 * p) - y2))
+                Math.round(cot(-a2 * p) * x1 - (x2 * cot(-a2 * p) - z2))
             );
-        } else if (Math.round(z1) === -90 || Math.round(z1) === 90) {
-            setAnswerZ(Math.round(y1));
+        } else if (Math.round(a1) === -90 || Math.round(a1) === 90) {
+            setAnswerZ(Math.round(z1));
             setAnswerX(
-                Math.round((x2 * cot(-z2 * p) - y2 + y1) / cot(-z2 * p))
+                Math.round((x2 * cot(-a2 * p) - z2 + z1) / cot(-a2 * p))
             );
         } else {
             if (
-                Math.round(z2) === -180 ||
-                Math.round(z2) === 0 ||
-                Math.round(z2) === 180
+                Math.round(a2) === -180 ||
+                Math.round(a2) === 0 ||
+                Math.round(a2) === 180
             ) {
                 setAnswerX(Math.round(x2));
                 setAnswerZ(
-                    Math.round(cot(-z1 * p) * x2 - (x1 * cot(-z1 * p) - y1))
+                    Math.round(cot(-a1 * p) * x2 - (x1 * cot(-a1 * p) - z1))
                 );
-            } else if (Math.round(z2) === -90 || Math.round(z2) === 90) {
-                setAnswerZ(Math.round(y2));
+            } else if (Math.round(a2) === -90 || Math.round(a2) === 90) {
+                setAnswerZ(Math.round(z2));
                 setAnswerX(
-                    Math.round((x1 * cot(-z1 * p) - y1 + y2) / cot(-z1 * p))
+                    Math.round((x1 * cot(-a1 * p) - z1 + z2) / cot(-a1 * p))
                 );
             } else {
                 const xValue = Math.round(
-                    (x1 * cot(-z1 * p) - y1 - (x2 * cot(-z2 * p) - y2)) /
-                        (cot(-z1 * p) - cot(-z2 * p))
+                    (x1 * cot(-a1 * p) - z1 - (x2 * cot(-a2 * p) - z2)) /
+                        (cot(-a1 * p) - cot(-a2 * p))
                 );
                 const zValue = Math.round(
-                    cot(-z1 * p) * xValue - (x1 * cot(-z1 * p) - y1)
+                    cot(-a1 * p) * xValue - (x1 * cot(-a1 * p) - z1)
                 );
                 setAnswerX(xValue);
                 setAnswerZ(zValue);
@@ -73,27 +73,27 @@ const Calculator: FC = () => {
 
     // Обработчик для запуска расчета
     const handleCalculate = () => {
-        if (Math.abs(Number(z1) - Number(z2)) < 1) {
+        if (Math.abs(Number(a1) - Number(a2)) < 1) {
             toast.error("Углы не могут быть равны");
-        } else if (Number(z1) > 360 || Number(z2) > 360) {
+        } else if (Number(a1) > 360 || Number(a2) > 360) {
             toast.error("Углы не могут быть больше 360 градусов");
         } else if (
             x1.length < 1 ||
             x2.length < 1 ||
-            y1.length < 1 ||
-            y2.length < 1 ||
             z1.length < 1 ||
-            z2.length < 1
+            z2.length < 1 ||
+            a1.length < 1 ||
+            a2.length < 1
         ) {
             toast.error("Заполните все поля");
         } else {
             calculateValues(
-                Number(z1),
-                Number(z2),
+                Number(a1),
+                Number(a2),
                 Number(x1),
                 Number(x2),
-                Number(y1),
-                Number(y2)
+                Number(z1),
+                Number(z2)
             );
         }
     };
@@ -110,15 +110,15 @@ const Calculator: FC = () => {
                 />
                 <Input
                     type="text"
-                    value={y1}
-                    placeholder="Y"
-                    onChange={(e) => setY1(e.target.value)}
+                    value={z1}
+                    placeholder="Z"
+                    onChange={(e) => setZ1(e.target.value)}
                 />
                 <Input
                     type="text"
-                    value={z1}
+                    value={a1}
                     placeholder="Угол"
-                    onChange={(e) => setZ1(e.target.value)}
+                    onChange={(e) => setA1(e.target.value)}
                 />
             </div>
 
@@ -132,15 +132,15 @@ const Calculator: FC = () => {
                 />
                 <Input
                     type="text"
-                    value={y2}
-                    placeholder="Y"
-                    onChange={(e) => setY2(e.target.value)}
+                    value={z2}
+                    placeholder="Z"
+                    onChange={(e) => setZ2(e.target.value)}
                 />
                 <Input
                     type="text"
-                    value={z2}
+                    value={a2}
                     placeholder="Угол"
-                    onChange={(e) => setZ2(e.target.value)}
+                    onChange={(e) => setA2(e.target.value)}
                 />
             </div>
 

@@ -35,7 +35,10 @@ const Header: FC = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="#" onClick={() => setIsMenuActive(false)}>
+                        <Link
+                            href="#tutorial"
+                            onClick={() => setIsMenuActive(false)}
+                        >
                             Инструкция
                         </Link>
                     </li>

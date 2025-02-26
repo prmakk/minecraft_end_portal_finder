@@ -81,6 +81,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
+            <head>
+                <link rel="icon" href="/favicon.png" sizes="any" />
+            </head>
             <body className={`${inter.variable}`}>
                 <Toaster position="top-right" />
                 {children}

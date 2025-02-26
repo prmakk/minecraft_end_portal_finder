@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "@/styles/global.scss";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -83,6 +84,18 @@ export default function RootLayout({
         <html lang="ru">
             <head>
                 <link rel="icon" href="/favicon.png" sizes="any" />
+                <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=G-XBHX3LZNW7`}
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`                      
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'G-XBHX3LZNW7');`}
+                </Script>
             </head>
             <body className={`${inter.variable}`}>
                 <Toaster position="top-right" />

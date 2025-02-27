@@ -59,8 +59,8 @@ export const metadata: Metadata = {
         images: ["/Ender_Dragon.webp"],
     },
     icons: {
-        icon: "/favicon.png",
-        apple: "/favicon.png",
+        icon: "/favicon.ico",
+        apple: "/favicon.ico",
     },
     robots: {
         index: true,
@@ -83,7 +83,7 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <head>
-                <link rel="icon" href="/favicon.png" sizes="any" />
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
                 <Script
                     src={`https://www.googletagmanager.com/gtag/js?id=G-XBHX3LZNW7`}
                     strategy="afterInteractive"

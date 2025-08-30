@@ -129,7 +129,7 @@ export default function Home() {
             </section>
 
             <footer className={styles.footer}>
-                <Link href="https://prmak.netlify.app" target="_blank">
+                <Link href="https://x.com/prmakk" target="_blank">
                     Разработчик
                 </Link>
             </footer>
